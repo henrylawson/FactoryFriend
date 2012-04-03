@@ -41,7 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Competition.cs" />
+    <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Factories\CompetitionFactory.cs" />
+    <Compile Include="Factories\DisciplineFactory.cs" />
     <Compile Include="Factories\Helpers\IdHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
