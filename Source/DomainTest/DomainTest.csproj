@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Entities\CompetitionTest.cs" />
     <Compile Include="Entities\DisciplineTest.cs" />
+    <Compile Include="Entities\EventTest.cs" />
     <Compile Include="Factories\CompetitionFactoryTest.cs" />
     <Compile Include="Factories\DisciplineFactoryTest.cs" />
     <Compile Include="Factories\EventFactoryTest.cs" />

@@ -1,5 +1,7 @@
 ﻿namespace Domain.Entities
 {
+    using System.Text;
+
     public class Event
     {
         public int Id;

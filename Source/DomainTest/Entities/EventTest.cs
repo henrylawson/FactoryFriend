@@ -3,7 +3,7 @@
     using NUnit.Framework;
 
     [TestFixture]
-    public class DisciplineTest
+    public class EventTest
     {
         //no logic to test
     }
