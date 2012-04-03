@@ -42,9 +42,12 @@
   <ItemGroup>
     <Compile Include="Entities\Competition.cs" />
     <Compile Include="Entities\Discipline.cs" />
+    <Compile Include="Entities\Event.cs" />
     <Compile Include="Factories\CompetitionFactory.cs" />
     <Compile Include="Factories\DisciplineFactory.cs" />
+    <Compile Include="Factories\EventFactory.cs" />
     <Compile Include="Factories\Helpers\IdHelper.cs" />
+    <Compile Include="Factories\IEventFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

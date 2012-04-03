@@ -8,30 +8,30 @@
     [TestFixture]
     public class CompetitionFactoryTest
     {
-        private Competition competitionWithSetProperties;
+        private Competition competitionWithAllPropertiesSet;
 
         [SetUp]
         public void SetUp()
         {
-            this.competitionWithSetProperties = CompetitionFactory.CreateDefaultWithSetProperties();
+            this.competitionWithAllPropertiesSet = new CompetitionFactory().CreateWithAllPropertiesSet();
         }
 
         [Test]
         public void ShouldNotHaveNullId()
         {
-            Assert.That(this.competitionWithSetProperties.Id, Is.Not.Null);
+            Assert.That(this.competitionWithAllPropertiesSet.Id, Is.Not.Null);
         }
 
         [Test]
         public void ShouldNotHaveZeroId()
         {
-            Assert.That(this.competitionWithSetProperties.Id, Is.Not.EqualTo(0));
+            Assert.That(this.competitionWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void ShouldHaveNameProperty()
         {
-            Assert.That(this.competitionWithSetProperties.Name, Is.EqualTo(CompetitionFactory.DefaultName));
+            Assert.That(this.competitionWithAllPropertiesSet.Name, Is.EqualTo(CompetitionFactory.DefaultName));
         }
     }
 }

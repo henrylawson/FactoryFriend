@@ -3,7 +3,7 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
-    public static class CompetitionFactory
+    public class CompetitionFactory : IEventFactory<Competition>
     {
         public static string DefaultName
         {
@@ -13,7 +13,7 @@
             }
         }
 
-        public static Competition CreateDefaultWithSetProperties()
+        public Competition CreateWithAllPropertiesSet()
         {
             return new Competition { Id = IdHelper.GenerateInteger(), Name = DefaultName };
         }

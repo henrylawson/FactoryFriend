@@ -3,7 +3,7 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
-    public class DisciplineFactory
+    public class DisciplineFactory : IEventFactory<Discipline>
     {
         public static string DefaultCode
         {
@@ -21,7 +21,7 @@
             }
         }
 
-        public static Discipline CreateDefaultWithAllPropertiesSet()
+        public Discipline CreateWithAllPropertiesSet()
         {
             return new Discipline { Id = IdHelper.GenerateInteger(), Code = DefaultCode, Name = DefaultName };
         }

@@ -8,36 +8,36 @@
     [TestFixture]
     public class DisciplineFactoryTest
     {
-        private Discipline discipline;
+        private Discipline disciplineWithAllPropertiesSet;
 
         [SetUp]
         public void SetUp()
         {
-            this.discipline = DisciplineFactory.CreateDefaultWithAllPropertiesSet();
+            this.disciplineWithAllPropertiesSet = new DisciplineFactory().CreateWithAllPropertiesSet();
         }
 
         [Test]
         public void ShouldHaveNonNullId()
         {
-            Assert.That(discipline.Id, Is.Not.Null);
+            Assert.That(this.disciplineWithAllPropertiesSet.Id, Is.Not.Null);
         }
 
         [Test]
         public void ShouldHaveNonZeroId()
         {
-            Assert.That(discipline.Id, Is.Not.EqualTo(0));
+            Assert.That(this.disciplineWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void ShouldHaveDisciplineShortCode()
         {
-            Assert.That(discipline.Code, Is.EqualTo(DisciplineFactory.DefaultCode));
+            Assert.That(this.disciplineWithAllPropertiesSet.Code, Is.EqualTo(DisciplineFactory.DefaultCode));
         }
 
         [Test]
         public void ShouldHaveDisciplineName()
         {
-            Assert.That(discipline.Name, Is.EqualTo(DisciplineFactory.DefaultName));
+            Assert.That(this.disciplineWithAllPropertiesSet.Name, Is.EqualTo(DisciplineFactory.DefaultName));
         }
     }
 }
