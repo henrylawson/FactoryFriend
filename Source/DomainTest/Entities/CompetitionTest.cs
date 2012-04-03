@@ -1,7 +1,5 @@
 ﻿namespace DomainTest.Entities
 {
-    using System;
-
     using Domain.Entities;
 
     using NUnit.Framework;
