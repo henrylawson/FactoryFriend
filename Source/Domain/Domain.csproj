@@ -40,19 +40,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\Athelete.cs" />
+    <Compile Include="Entities\Athlete.cs" />
     <Compile Include="Entities\Competition.cs" />
     <Compile Include="Entities\Result.cs" />
     <Compile Include="Entities\Discipline.cs" />
     <Compile Include="Entities\Event.cs" />
-    <Compile Include="Factories\AtheleteFactory.cs" />
+    <Compile Include="Factories\AthleteFactory.cs" />
     <Compile Include="Factories\CompetitionFactory.cs" />
     <Compile Include="Factories\DisciplineFactory.cs" />
     <Compile Include="Factories\EventFactory.cs" />
     <Compile Include="Factories\Helpers\PseudoRandomGenerate.cs" />
-    <Compile Include="Factories\IEntityFactory.cs" />
     <Compile Include="Factories\ResultFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FactoryFriendCore\FactoryFriendCore.csproj">
+      <Project>{4A283380-72F6-418B-955A-968F94B2AC6D}</Project>
+      <Name>FactoryFriendCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

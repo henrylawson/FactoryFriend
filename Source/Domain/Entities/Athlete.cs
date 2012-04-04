@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class Athelete
+    public class Athlete
     {
 
         public int Id { get; set; }

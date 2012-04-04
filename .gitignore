@@ -10,3 +10,7 @@
 /Source/Domain/obj
 /Source/DomainTest/bin
 /Source/DomainTest/obj
+/Source/FactoryFriendCore/bin
+/Source/FactoryFriendCore/obj
+/Source/FactoryFriendCoreTest/bin
+/Source/FactoryFriendCoreTest/obj

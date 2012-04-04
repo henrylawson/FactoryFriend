@@ -3,9 +3,11 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
+    using FactoryFriendCore;
+
     public class DisciplineFactory : IEntityFactory<Discipline>
     {
-        public Discipline CreateWithAllPropertiesSet()
+        public Discipline WithAllPropertiesSet()
         {
             return new Discipline
                 {

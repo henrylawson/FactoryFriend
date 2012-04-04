@@ -3,11 +3,13 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
-    public class AtheleteFactory : IEntityFactory<Athelete>
+    using FactoryFriendCore;
+
+    public class AthleteFactory : IEntityFactory<Athlete>
     {
-        public Athelete CreateWithAllPropertiesSet()
+        public Athlete WithAllPropertiesSet()
         {
-            return new Athelete
+            return new Athlete
                 {
                     Id = PseudoRandomGenerate.Integer,
                     FirstName = PseudoRandomGenerate.FirstName,

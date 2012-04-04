@@ -8,7 +8,7 @@
 
         public long MillisecondTime { get; set; }
 
-        public Athelete Athlete { get; set; }
+        public Athlete Athlete { get; set; }
 
         public Event Event { get; set; }
     }

@@ -3,6 +3,8 @@
     using Domain.Entities;
     using Domain.Factories;
 
+    using FactoryFriendCore;
+
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,7 +15,8 @@
         [SetUp]
         public void SetUp()
         {
-            this.resultWithAllPropertiesSet = new ResultFactory().CreateWithAllPropertiesSet();
+            FactoryFriend.AssignEntity<Result>().Factory<ResultFactory>();
+            resultWithAllPropertiesSet = FactoryFriend.Create<Result>().WithAllPropertiesSet();
         }
 
         [Test]

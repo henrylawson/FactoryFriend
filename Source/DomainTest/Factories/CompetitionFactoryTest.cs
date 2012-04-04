@@ -3,6 +3,8 @@
     using Domain.Entities;
     using Domain.Factories;
 
+    using FactoryFriendCore;
+
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,7 +15,8 @@
         [SetUp]
         public void SetUp()
         {
-            this.competitionWithAllPropertiesSet = new CompetitionFactory().CreateWithAllPropertiesSet();
+            FactoryFriend.AssignEntity<Competition>().Factory<CompetitionFactory>();
+            this.competitionWithAllPropertiesSet = FactoryFriend.Create<Competition>().WithAllPropertiesSet();
         }
 
         [Test]

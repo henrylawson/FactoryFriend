@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{256CBBB8-C86B-4467-A773-B710A1804D7B}</ProjectGuid>
+    <ProjectGuid>{C661E710-F535-4EFD-879D-763D5F53E60F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DomainTest</RootNamespace>
-    <AssemblyName>DomainTest</AssemblyName>
+    <RootNamespace>FactoryFriendCoreTest</RootNamespace>
+    <AssemblyName>FactoryFriendCoreTest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,9 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
-    </Reference>
+    <Reference Include="nunit.framework, Version=2.6.0.12051, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,22 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\CompetitionTest.cs" />
-    <Compile Include="Entities\AthleteTest.cs" />
-    <Compile Include="Entities\DisciplineTest.cs" />
-    <Compile Include="Entities\EventTest.cs" />
-    <Compile Include="Factories\AthleteFactoryTest.cs" />
-    <Compile Include="Factories\CompetitionFactoryTest.cs" />
-    <Compile Include="Factories\DisciplineFactoryTest.cs" />
-    <Compile Include="Factories\EventFactoryTest.cs" />
-    <Compile Include="Factories\Helpers\PseudoRandomGenerateTest.cs" />
-    <Compile Include="Factories\ResultFactoryTest.cs" />
+    <Compile Include="FactoryFriendTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj">
@@ -67,10 +51,9 @@
     </ProjectReference>
     <ProjectReference Include="..\FactoryFriendCore\FactoryFriendCore.csproj">
       <Project>{4A283380-72F6-418B-955A-968F94B2AC6D}</Project>
-      <Name>FactoryFriendCore</Name>
+      <Name>FactoryFriend</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

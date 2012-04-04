@@ -3,6 +3,8 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
+    using FactoryFriendCore;
+
     public class EventFactory : IEntityFactory<Event>
     {
         public static decimal DefaultDistance
@@ -13,13 +15,13 @@
             }
         }
 
-        public Event CreateWithAllPropertiesSet()
+        public Event WithAllPropertiesSet()
         {
             return new Event
             {
                 Id = PseudoRandomGenerate.Integer,
                 Distance = DefaultDistance,
-                Discipline = new DisciplineFactory().CreateWithAllPropertiesSet()
+                Discipline = new DisciplineFactory().WithAllPropertiesSet()
             };
         }
     }

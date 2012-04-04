@@ -3,17 +3,19 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
+    using FactoryFriendCore;
+
     public class ResultFactory : IEntityFactory<Result>
     {
-        public Result CreateWithAllPropertiesSet()
+        public Result WithAllPropertiesSet()
         {
             return new Result
                 {
                     Id = PseudoRandomGenerate.Integer,
                     MillisecondTime = PseudoRandomGenerate.Long,
-                    Athlete = new AtheleteFactory().CreateWithAllPropertiesSet(),
-                    Event = new EventFactory().CreateWithAllPropertiesSet(),
-                    Competition = new CompetitionFactory().CreateWithAllPropertiesSet()
+                    Athlete = new AthleteFactory().WithAllPropertiesSet(),
+                    Event = new EventFactory().WithAllPropertiesSet(),
+                    Competition = new CompetitionFactory().WithAllPropertiesSet()
                 };
         }
     }

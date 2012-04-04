@@ -3,6 +3,8 @@
     using Domain.Entities;
     using Domain.Factories;
 
+    using FactoryFriendCore;
+
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,7 +15,8 @@
         [SetUp]
         public void SetUp()
         {
-            this.disciplineWithAllPropertiesSet = new DisciplineFactory().CreateWithAllPropertiesSet();
+            FactoryFriend.AssignEntity<Discipline>().Factory<DisciplineFactory>();
+            disciplineWithAllPropertiesSet = FactoryFriend.Create<Discipline>().WithAllPropertiesSet();
         }
 
         [Test]

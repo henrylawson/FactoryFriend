@@ -3,6 +3,8 @@
     using Domain.Entities;
     using Domain.Factories;
 
+    using FactoryFriendCore;
+
     using NUnit.Framework;
 
     [TestFixture]
@@ -13,7 +15,8 @@
         [SetUp]
         public void SetUp()
         {
-            this.eventWithPropertiesSet = new EventFactory().CreateWithAllPropertiesSet();
+            FactoryFriend.AssignEntity<Event>().Factory<EventFactory>();
+            eventWithPropertiesSet = FactoryFriend.Create<Event>().WithAllPropertiesSet();
         }
 
         [Test]
