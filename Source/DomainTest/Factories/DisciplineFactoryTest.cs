@@ -19,25 +19,25 @@
         [Test]
         public void ShouldHaveNonNullId()
         {
-            Assert.That(this.disciplineWithAllPropertiesSet.Id, Is.Not.Null);
+            Assert.That(disciplineWithAllPropertiesSet.Id, Is.Not.Null);
         }
 
         [Test]
         public void ShouldHaveNonZeroId()
         {
-            Assert.That(this.disciplineWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
+            Assert.That(disciplineWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void ShouldHaveDisciplineShortCode()
         {
-            Assert.That(this.disciplineWithAllPropertiesSet.Code, Is.EqualTo(DisciplineFactory.DefaultCode));
+            Assert.That(!string.IsNullOrEmpty(disciplineWithAllPropertiesSet.Code));
         }
 
         [Test]
         public void ShouldHaveDisciplineName()
         {
-            Assert.That(this.disciplineWithAllPropertiesSet.Name, Is.EqualTo(DisciplineFactory.DefaultName));
+            Assert.That(!string.IsNullOrEmpty(disciplineWithAllPropertiesSet.Name));
         }
     }
 }

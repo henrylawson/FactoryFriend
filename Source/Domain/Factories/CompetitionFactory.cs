@@ -3,19 +3,11 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
-    public class CompetitionFactory : IEventFactory<Competition>
+    public class CompetitionFactory : IEntityFactory<Competition>
     {
-        public static string DefaultName
-        {
-            get
-            {
-                return "Brisbane Age & Open 2010";
-            }
-        }
-
         public Competition CreateWithAllPropertiesSet()
         {
-            return new Competition { Id = IdHelper.GenerateInteger(), Name = DefaultName };
+            return new Competition { Id = PseudoRandomGenerate.Integer, Name = PseudoRandomGenerate.PhraseWithWordCount(6) };
         }
     }
 }

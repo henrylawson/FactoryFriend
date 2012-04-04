@@ -19,19 +19,19 @@
         [Test]
         public void ShouldNotHaveNullId()
         {
-            Assert.That(this.competitionWithAllPropertiesSet.Id, Is.Not.Null);
+            Assert.That(competitionWithAllPropertiesSet.Id, Is.Not.Null);
         }
 
         [Test]
         public void ShouldNotHaveZeroId()
         {
-            Assert.That(this.competitionWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
+            Assert.That(competitionWithAllPropertiesSet.Id, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void ShouldHaveNameProperty()
         {
-            Assert.That(this.competitionWithAllPropertiesSet.Name, Is.EqualTo(CompetitionFactory.DefaultName));
+            Assert.That(!string.IsNullOrEmpty(competitionWithAllPropertiesSet.Name));
         }
     }
 }

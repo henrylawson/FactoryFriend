@@ -1,6 +1,6 @@
 namespace Domain.Factories
 {
-    public interface IEventFactory<out TEntityType>
+    public interface IEntityFactory<out TEntityType>
     {
         TEntityType CreateWithAllPropertiesSet();
     }

@@ -19,25 +19,25 @@
         [Test]
         public void ShouldNotHaveNullId()
         {
-            Assert.That(this.eventWithPropertiesSet.Id, Is.Not.Null);
+            Assert.That(eventWithPropertiesSet.Id, Is.Not.Null);
         }
 
         [Test]
         public void ShouldNotHaveZeroId()
         {
-            Assert.That(this.eventWithPropertiesSet.Id, Is.Not.EqualTo(0));
+            Assert.That(eventWithPropertiesSet.Id, Is.Not.EqualTo(0));
         }
 
         [Test]
         public void ShouldHaveDistance()
         {
-            Assert.That(this.eventWithPropertiesSet.Distance, Is.EqualTo(EventFactory.DefaultDistance));
+            Assert.That(eventWithPropertiesSet.Distance, Is.EqualTo(EventFactory.DefaultDistance));
         }
 
         [Test]
         public void ShouldHaveDiscipline()
         {
-            Assert.That(this.eventWithPropertiesSet.Discipline, Is.Not.Null);
+            Assert.That(eventWithPropertiesSet.Discipline, Is.Not.Null);
         }
     }
 }

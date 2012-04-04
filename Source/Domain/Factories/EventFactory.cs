@@ -3,7 +3,7 @@
     using Domain.Entities;
     using Domain.Factories.Helpers;
 
-    public class EventFactory : IEventFactory<Event>
+    public class EventFactory : IEntityFactory<Event>
     {
         public static decimal DefaultDistance
         {
@@ -17,7 +17,7 @@
         {
             return new Event
             {
-                Id = IdHelper.GenerateInteger(),
+                Id = PseudoRandomGenerate.Integer,
                 Distance = DefaultDistance,
                 Discipline = new DisciplineFactory().CreateWithAllPropertiesSet()
             };

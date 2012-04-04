@@ -44,12 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\CompetitionTest.cs" />
+    <Compile Include="Entities\AthleteTest.cs" />
     <Compile Include="Entities\DisciplineTest.cs" />
     <Compile Include="Entities\EventTest.cs" />
+    <Compile Include="Factories\AtheleteFactoryTest.cs" />
     <Compile Include="Factories\CompetitionFactoryTest.cs" />
     <Compile Include="Factories\DisciplineFactoryTest.cs" />
     <Compile Include="Factories\EventFactoryTest.cs" />
-    <Compile Include="Factories\Helpers\IdHelperTest.cs" />
+    <Compile Include="Factories\Helpers\PseudoRandomGenerateTest.cs" />
+    <Compile Include="Factories\ResultFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
