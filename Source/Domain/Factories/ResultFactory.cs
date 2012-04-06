@@ -1,22 +1,23 @@
 ﻿namespace Domain.Factories
 {
     using Domain.Entities;
-    using Domain.Factories.Helpers;
 
     using FactoryFriendCore;
+    using FactoryFriendCore.Helpers;
 
-    public class ResultFactory : IEntityFactory<Result>
+    public class ResultFactory
     {
-        public Result WithAllPropertiesSet()
+        public ResultFactory()
         {
-            return new Result
-                {
-                    Id = PseudoRandomGenerate.Integer,
-                    MillisecondTime = PseudoRandomGenerate.Long,
-                    Athlete = new AthleteFactory().WithAllPropertiesSet(),
-                    Event = new EventFactory().WithAllPropertiesSet(),
-                    Competition = new CompetitionFactory().WithAllPropertiesSet()
-                };
+            FactoryFriend.Define<Result>().As(x =>
+                { 
+                    x.Id = PseudoRandomGenerate.Integer;
+                    x.MillisecondTime = PseudoRandomGenerate.Long;
+                    x.Athlete = FactoryFriend.Build<Athlete>().Default();
+                    x.Competition = FactoryFriend.Build<Competition>().Default();
+                    x.Event = FactoryFriend.Build<Event>().Default();
+                    return x;
+                });
         }
     }
 }

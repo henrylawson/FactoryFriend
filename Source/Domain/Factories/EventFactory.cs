@@ -1,28 +1,21 @@
 ﻿namespace Domain.Factories
 {
     using Domain.Entities;
-    using Domain.Factories.Helpers;
 
     using FactoryFriendCore;
+    using FactoryFriendCore.Helpers;
 
-    public class EventFactory : IEntityFactory<Event>
+    public class EventFactory
     {
-        public static decimal DefaultDistance
+        public EventFactory()
         {
-            get
-            {
-                return 100.00m;
-            }
-        }
-
-        public Event WithAllPropertiesSet()
-        {
-            return new Event
-            {
-                Id = PseudoRandomGenerate.Integer,
-                Distance = DefaultDistance,
-                Discipline = new DisciplineFactory().WithAllPropertiesSet()
-            };
+            FactoryFriend.Define<Event>().As(x =>
+                { 
+                    x.Id = PseudoRandomGenerate.Integer;
+                    x.Discipline = FactoryFriend.Build<Discipline>().Default();
+                    x.Distance = 100.00m;
+                    return x;
+                });
         }
     }
 }

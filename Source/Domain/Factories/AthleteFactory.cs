@@ -1,20 +1,21 @@
 ﻿namespace Domain.Factories
 {
     using Domain.Entities;
-    using Domain.Factories.Helpers;
 
     using FactoryFriendCore;
+    using FactoryFriendCore.Helpers;
 
-    public class AthleteFactory : IEntityFactory<Athlete>
+    public class AthleteFactory
     {
-        public Athlete WithAllPropertiesSet()
+        public AthleteFactory()
         {
-            return new Athlete
+            FactoryFriend.Define<Athlete>().As(x =>
                 {
-                    Id = PseudoRandomGenerate.Integer,
-                    FirstName = PseudoRandomGenerate.FirstName,
-                    LastName = PseudoRandomGenerate.LastName
-                };
+                    x.Id = PseudoRandomGenerate.Integer;
+                    x.FirstName = PseudoRandomGenerate.FirstName;
+                    x.LastName = PseudoRandomGenerate.LastName;
+                    return x;
+                });
         }
     }
 }

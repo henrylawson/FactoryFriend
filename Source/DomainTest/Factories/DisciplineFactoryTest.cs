@@ -15,8 +15,14 @@
         [SetUp]
         public void SetUp()
         {
-            FactoryFriend.AssignEntity<Discipline>().Factory<DisciplineFactory>();
-            disciplineWithAllPropertiesSet = FactoryFriend.Create<Discipline>().WithAllPropertiesSet();
+            new DisciplineFactory();
+            disciplineWithAllPropertiesSet = FactoryFriend.Build<Discipline>().Default();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            FactoryFriend.Clear();
         }
 
         [Test]

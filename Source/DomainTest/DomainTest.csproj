@@ -51,7 +51,6 @@
     <Compile Include="Factories\CompetitionFactoryTest.cs" />
     <Compile Include="Factories\DisciplineFactoryTest.cs" />
     <Compile Include="Factories\EventFactoryTest.cs" />
-    <Compile Include="Factories\Helpers\PseudoRandomGenerateTest.cs" />
     <Compile Include="Factories\ResultFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -40,10 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EntityFactoryHolder.cs" />
+    <Compile Include="EntityNotFoundException.cs" />
+    <Compile Include="Builders\BuildHelper.cs" />
+    <Compile Include="Builders\DefineHelper.cs" />
+    <Compile Include="Builders\ExtendStorageHelper.cs" />
+    <Compile Include="Builders\ExtendHelper.cs" />
     <Compile Include="FactoryFriend.cs" />
-    <Compile Include="IEntityFactory.cs" />
-    <Compile Include="IEntityFactoryHolder.cs" />
+    <Compile Include="Builders\HelperBase.cs" />
+    <Compile Include="Helpers\PseudoRandomGenerate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

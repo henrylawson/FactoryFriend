@@ -15,8 +15,15 @@
         [SetUp]
         public void SetUp()
         {
-            FactoryFriend.AssignEntity<Event>().Factory<EventFactory>();
-            eventWithPropertiesSet = FactoryFriend.Create<Event>().WithAllPropertiesSet();
+            new DisciplineFactory();
+            new EventFactory();
+            eventWithPropertiesSet = FactoryFriend.Build<Event>().Default();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            FactoryFriend.Clear();
         }
 
         [Test]
@@ -34,7 +41,7 @@
         [Test]
         public void ShouldHaveDistance()
         {
-            Assert.That(eventWithPropertiesSet.Distance, Is.EqualTo(EventFactory.DefaultDistance));
+            Assert.That(eventWithPropertiesSet.Distance, Is.EqualTo(100.00m));
         }
 
         [Test]

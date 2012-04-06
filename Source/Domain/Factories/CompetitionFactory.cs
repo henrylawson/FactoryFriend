@@ -1,15 +1,20 @@
 ﻿namespace Domain.Factories
 {
     using Domain.Entities;
-    using Domain.Factories.Helpers;
 
     using FactoryFriendCore;
+    using FactoryFriendCore.Helpers;
 
-    public class CompetitionFactory : IEntityFactory<Competition>
+    public class CompetitionFactory
     {
-        public Competition WithAllPropertiesSet()
+        public CompetitionFactory()
         {
-            return new Competition { Id = PseudoRandomGenerate.Integer, Name = PseudoRandomGenerate.PhraseWithWordCount(6) };
+            FactoryFriend.Define<Competition>().As(x =>
+                { 
+                    x.Id = PseudoRandomGenerate.Integer;
+                    x.Name = PseudoRandomGenerate.PhraseWithWordCount(6);
+                    return x;
+                });
         }
     }
 }

@@ -15,8 +15,18 @@
         [SetUp]
         public void SetUp()
         {
-            FactoryFriend.AssignEntity<Result>().Factory<ResultFactory>();
-            resultWithAllPropertiesSet = FactoryFriend.Create<Result>().WithAllPropertiesSet();
+            new AthleteFactory();
+            new CompetitionFactory();
+            new DisciplineFactory();
+            new EventFactory();
+            new ResultFactory();
+            resultWithAllPropertiesSet = FactoryFriend.Build<Result>().Default();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            FactoryFriend.Clear();
         }
 
         [Test]

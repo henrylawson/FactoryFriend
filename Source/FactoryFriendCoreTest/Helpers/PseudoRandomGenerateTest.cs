@@ -1,8 +1,6 @@
-﻿namespace DomainTest.Factories.Helpers
+﻿namespace FactoryFriendCoreTest.Helpers
 {
-    using System;
-
-    using Domain.Factories.Helpers;
+    using FactoryFriendCore.Helpers;
 
     using NUnit.Framework;
 

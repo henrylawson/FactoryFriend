@@ -15,8 +15,14 @@
         [SetUp]
         public void SetUp()
         {
-            FactoryFriend.AssignEntity<Competition>().Factory<CompetitionFactory>();
-            this.competitionWithAllPropertiesSet = FactoryFriend.Create<Competition>().WithAllPropertiesSet();
+            new CompetitionFactory();
+            this.competitionWithAllPropertiesSet = FactoryFriend.Build<Competition>().Default();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            FactoryFriend.Clear();
         }
 
         [Test]

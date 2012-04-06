@@ -49,7 +49,6 @@
     <Compile Include="Factories\CompetitionFactory.cs" />
     <Compile Include="Factories\DisciplineFactory.cs" />
     <Compile Include="Factories\EventFactory.cs" />
-    <Compile Include="Factories\Helpers\PseudoRandomGenerate.cs" />
     <Compile Include="Factories\ResultFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

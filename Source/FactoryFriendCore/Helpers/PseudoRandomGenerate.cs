@@ -1,8 +1,7 @@
-﻿namespace Domain.Factories.Helpers
+﻿namespace FactoryFriendCore.Helpers
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Text;
 
     public class PseudoRandomGenerate

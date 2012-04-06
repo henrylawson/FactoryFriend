@@ -1,20 +1,21 @@
 ﻿namespace Domain.Factories
 {
     using Domain.Entities;
-    using Domain.Factories.Helpers;
 
     using FactoryFriendCore;
+    using FactoryFriendCore.Helpers;
 
-    public class DisciplineFactory : IEntityFactory<Discipline>
+    public class DisciplineFactory
     {
-        public Discipline WithAllPropertiesSet()
+        public DisciplineFactory()
         {
-            return new Discipline
+            FactoryFriend.Define<Discipline>().As(x =>
                 {
-                    Id = PseudoRandomGenerate.Integer,
-                    Code = PseudoRandomGenerate.StringWithCharacterCount(4).ToUpper(), 
-                    Name = PseudoRandomGenerate.PhraseWithWordCount(2)
-                };
+                    x.Id = PseudoRandomGenerate.Integer;
+                    x.Name = PseudoRandomGenerate.PhraseWithWordCount(2);
+                    x.Code = PseudoRandomGenerate.StringWithCharacterCount(4).ToUpper();
+                    return x;
+                });
         }
     }
 }

@@ -15,8 +15,14 @@
         [SetUp]
         public void SetUp()
         {
-            FactoryFriend.AssignEntity<Athlete>().Factory<AthleteFactory>();
-            athleteWithAllPropertiesSet = FactoryFriend.Create<Athlete>().WithAllPropertiesSet();
+            new AthleteFactory();
+            athleteWithAllPropertiesSet = FactoryFriend.Build<Athlete>().Default();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            FactoryFriend.Clear();
         }
 
         [Test]
