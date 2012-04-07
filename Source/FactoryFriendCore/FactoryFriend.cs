@@ -43,17 +43,18 @@
             var key = CreateKey(entityType, entityFactoryAlias);
             if (!this.factories.ContainsKey(key))
             {
-                ThrowEntityNotFoundException(entityType, entityFactoryAlias);
+                throw new EntityNotFoundException(
+                    CreateEntityNotFoundExceptionMessage(entityType, entityFactoryAlias));
             }
             return this.factories[key];
         }
 
-        private static void ThrowEntityNotFoundException(Type entityType, string entityFactoryAlias)
+        private static string CreateEntityNotFoundExceptionMessage(Type entityType, string entityFactoryAlias)
         {
             string message = string.IsNullOrEmpty(entityFactoryAlias) ? 
                 string.Format(DefaultFactoryNotFoundMessage, entityType) : 
                 string.Format(FactoryNotFoundExceptionMessage, entityType, entityFactoryAlias);
-            throw new EntityNotFoundException(message);
+            return message;
         }
 
         public static DefineHelper<TEntity> Define<TEntity>() where TEntity : new()
