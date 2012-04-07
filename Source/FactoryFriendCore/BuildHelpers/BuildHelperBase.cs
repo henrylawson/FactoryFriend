@@ -1,0 +1,12 @@
+namespace FactoryFriendCore.BuildHelpers
+{
+    public class BuildHelperBase
+    {
+        protected FactoryFriend FactoryFriend;
+
+        internal BuildHelperBase(FactoryFriend factoryFriend)
+        {
+            this.FactoryFriend = factoryFriend;
+        }
+    }
+}

@@ -5,7 +5,7 @@
     using System.Linq;
     using System.Reflection;
 
-    using FactoryFriendCore.Builders;
+    using FactoryFriendCore.BuildHelpers;
     using FactoryFriendCore.Common;
     using FactoryFriendCore.Templating;
 
@@ -32,19 +32,19 @@
             }
         }
 
-        public static DefineHelper<TEntity> Define<TEntity>() where TEntity : new()
+        public static DefineBuildHelper<TEntity> Define<TEntity>() where TEntity : new()
         {
-            return new DefineHelper<TEntity>(Instance);
+            return new DefineBuildHelper<TEntity>(Instance);
         }
 
-        public static BuildHelper<TEntity> Build<TEntity>() where TEntity : new()
+        public static BuildBuildHelper<TEntity> Build<TEntity>() where TEntity : new()
         {
-            return new BuildHelper<TEntity>(Instance);
+            return new BuildBuildHelper<TEntity>(Instance);
         }
 
-        public static ExtendHelper<TEntity> Extend<TEntity>() where TEntity : new()
+        public static ExtendBuildHelper<TEntity> Extend<TEntity>() where TEntity : new()
         {
-            return new ExtendHelper<TEntity>(Instance);
+            return new ExtendBuildHelper<TEntity>(Instance);
         }
 
         public static void Clear()

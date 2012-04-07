@@ -1,9 +1,9 @@
-namespace FactoryFriendCore.Builders
+namespace FactoryFriendCore.BuildHelpers
 {
-    public sealed class BuildHelper<TEntity> : HelperBase
+    public sealed class BuildBuildHelper<TEntity> : BuildHelperBase
         where TEntity : new()
     {
-        internal BuildHelper(FactoryFriend factoryFriend)
+        internal BuildBuildHelper(FactoryFriend factoryFriend)
             : base(factoryFriend)
         {
             //does nothing
