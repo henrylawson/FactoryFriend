@@ -1,10 +1,11 @@
 namespace FactoryFriendCore.Builders
 {
-    public class ExtendHelper<TEntity> : HelperBase
+    public sealed class ExtendHelper<TEntity> : HelperBase
+        where TEntity : new()
     {
         private string entityFactoryAlias;
 
-        public ExtendHelper(FactoryFriend factoryFriend)
+        internal ExtendHelper(FactoryFriend factoryFriend)
             : base(factoryFriend)
         {
             //does nothing
@@ -16,9 +17,9 @@ namespace FactoryFriendCore.Builders
             return this;
         }
 
-        public ExtendStorageHelper<TEntity> ToBe(string newAlias)
+        public StorageHelper<TEntity> ToBe(string newAlias)
         {
-            return new ExtendStorageHelper<TEntity>(this.FactoryFriend, this.entityFactoryAlias, newAlias);
+            return new StorageHelper<TEntity>(this.FactoryFriend, this.entityFactoryAlias, newAlias);
         }
     }
 }

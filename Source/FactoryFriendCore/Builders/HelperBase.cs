@@ -4,7 +4,7 @@ namespace FactoryFriendCore.Builders
     {
         protected FactoryFriend FactoryFriend;
 
-        public HelperBase(FactoryFriend factoryFriend)
+        internal HelperBase(FactoryFriend factoryFriend)
         {
             this.FactoryFriend = factoryFriend;
         }

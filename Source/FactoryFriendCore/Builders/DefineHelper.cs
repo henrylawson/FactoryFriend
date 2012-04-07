@@ -1,27 +1,22 @@
 namespace FactoryFriendCore.Builders
 {
-    public class DefineHelper<TEntity> : HelperBase
+    public sealed class DefineHelper<TEntity> : HelperBase
         where TEntity : new()
     {
-        private string entityFactoryAlias;
-
-        public DefineHelper(FactoryFriend factoryFriend)
+        internal DefineHelper(FactoryFriend factoryFriend)
             : base(factoryFriend)
         {
             //does nothing
         }
 
-        public DefineHelper<TEntity> WithAlias(string alias)
+        public StorageHelper<TEntity> WithAlias(string alias)
         {
-            this.entityFactoryAlias = alias;
-            return this;
+            return new StorageHelper<TEntity>(FactoryFriend, alias);
         }
         
-        public delegate TEntity DefineAs(TEntity entity);
-
-        public void As(DefineAs objectFunction)
+        public void As(FactoryFriend.FactoryFunction<TEntity> objectFunction)
         {
-            this.FactoryFriend.Add(typeof(TEntity), this.entityFactoryAlias, objectFunction(new TEntity()));
+            new StorageHelper<TEntity>(FactoryFriend, string.Empty).As(objectFunction);
         }
     }
 }

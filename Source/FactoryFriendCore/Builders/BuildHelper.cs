@@ -1,8 +1,9 @@
 namespace FactoryFriendCore.Builders
 {
-    public class BuildHelper<TEntity> : HelperBase
+    public sealed class BuildHelper<TEntity> : HelperBase
+        where TEntity : new()
     {
-        public BuildHelper(FactoryFriend factoryFriend)
+        internal BuildHelper(FactoryFriend factoryFriend)
             : base(factoryFriend)
         {
             //does nothing
@@ -10,7 +11,7 @@ namespace FactoryFriendCore.Builders
 
         public TEntity WithAlias(string entityFactoryAlias)
         {
-            return (TEntity)this.FactoryFriend.Get(typeof(TEntity), entityFactoryAlias);
+            return this.FactoryFriend.Get<TEntity>(entityFactoryAlias);
         }
 
         public TEntity Default()

@@ -44,17 +44,19 @@
     <Compile Include="FactoryFriendTest.cs" />
     <Compile Include="Helpers\PseudoRandomGenerateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Templating\TemplatorTest.cs" />
+    <Compile Include="TestData\FirstTemplate.cs" />
+    <Compile Include="TestData\SecondTemplate.cs" />
+    <Compile Include="TestData\Contact.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Domain\Domain.csproj">
-      <Project>{816A3D86-3EE1-4FC3-BA23-D299F2C97490}</Project>
-      <Name>Domain</Name>
-    </ProjectReference>
     <ProjectReference Include="..\FactoryFriendCore\FactoryFriendCore.csproj">
       <Project>{4A283380-72F6-418B-955A-968F94B2AC6D}</Project>
       <Name>FactoryFriend</Name>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

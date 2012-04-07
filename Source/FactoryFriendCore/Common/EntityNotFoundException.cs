@@ -1,4 +1,4 @@
-namespace FactoryFriendCore
+namespace FactoryFriendCore.Common
 {
     using System;
 
