@@ -11,3 +11,11 @@
 /Source/FactoryFriendCore/obj
 /Source/FactoryFriendCoreTest/bin
 /Source/FactoryFriendCoreTest/obj
+
+/Tools/nant-0.91/*
+!/Tools/nant-0.91/DOWNLOAD_AND_EXTRACT_HERE
+
+/Tools/NUnit-2.6.0.12051/*
+!/Tools/NUnit-2.6.0.12051/DOWNLOAD_AND_EXTRACT_HERE
+
+/Build

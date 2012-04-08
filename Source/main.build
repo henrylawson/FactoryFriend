@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<project name="FactoryFriend" default="build" basedir=".">
+	<property name="basedir" value="${path::get-full-path('.')}" />
+	<property name="tooldir" value="${path::get-full-path('..')}\Tools" />
+	<property name="windir" value="${environment::get-variable('WinDir')}" />
+	<property name="programfilesdir" value="${environment::get-variable('programfiles')}" />
+	<property name="build.dir" value="${basedir}\..\Build" />
+	<property name="solution.path" value="Source" />
+	<property name="solution.file" value="FactoryFriend.sln" />
+	<property name="ms-build-exe" value="${windir}\Microsoft.NET\Framework\v4.0.30319\MSBuild.exe"/>
+
+	<target name="clean" description="Cleans build directory">
+		<delete dir="${build.dir}" />
+		<mkdir dir="${build.dir}" />
+	</target>
+
+	<target name="compile" description="Compiles source code">
+		<exec program="${ms-build-exe}" verbose="true">
+			<arg value="/property:OutputPath=${build.dir}" />
+			<arg value="/target:Rebuild" />
+			<arg value="/verbosity:quiet" />
+			<arg value="/nologo" />
+			<arg line='${solution.file}' />
+		</exec>
+	</target>
+  
+	<target name="test" description="Tests the compilation" depends="clean, compile">
+		<exec program="${tooldir}\NUnit-2.6.0.12051\bin\nunit-console.exe">
+			<arg value="${build.dir}\FactoryFriendCoreTest.dll" />
+			<arg value="/out:${build.dir}\TestResult.txt" />
+		</exec>
+	</target>
+	
+	<target name="build" depends="clean,compile,test"/>
+</project>

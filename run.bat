@@ -1,0 +1,1 @@
+.\Tools\nant-0.91\bin\nant -buildfile:Source\main.build %1
