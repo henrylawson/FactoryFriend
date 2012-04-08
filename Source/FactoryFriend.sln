@@ -1,10 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTest", "DomainTest\DomainTest.csproj", "{256CBBB8-C86B-4467-A773-B710A1804D7B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{816A3D86-3EE1-4FC3-BA23-D299F2C97490}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryFriendCore", "FactoryFriendCore\FactoryFriendCore.csproj", "{4A283380-72F6-418B-955A-968F94B2AC6D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FactoryFriendCoreTest", "FactoryFriendCoreTest\FactoryFriendCoreTest.csproj", "{C661E710-F535-4EFD-879D-763D5F53E60F}"

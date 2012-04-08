@@ -1,16 +1,12 @@
-/Source/_ReSharper.Swimstatis/*
+/Source/_ReSharper.*/*
 
 /Source/packages/*
 !/Source/packages/repositories.config
 
-/Source/Swimstatis.suo
-/Source/Swimstatis.sln.DotSettings.user
-/Source/Swimstatis.1.2.dotCover
+/Source/*.suo
+/Source/*.sln.DotSettings.user
+/Source/*.1.2.dotCover
 
-/Source/Domain/bin
-/Source/Domain/obj
-/Source/DomainTest/bin
-/Source/DomainTest/obj
 /Source/FactoryFriendCore/bin
 /Source/FactoryFriendCore/obj
 /Source/FactoryFriendCoreTest/bin
