@@ -25,7 +25,7 @@
 
         private void InitializeTemplates()
         {
-            var templator = new Templator(AppDomain.CurrentDomain.RelativeSearchPath, Assembly.GetExecutingAssembly().Location);
+            var templator = new Templator(AppDomain.CurrentDomain.GetAssemblies());
             foreach (var methodInfo in templator.GatherMethodInfosForTemplates())
             {
                 Set(methodInfo.GetParameters()[0].ParameterType, methodInfo.Name, new List<object> { methodInfo });

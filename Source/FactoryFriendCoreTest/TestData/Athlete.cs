@@ -1,4 +1,4 @@
-namespace FactoryFriendCore.TestData
+namespace FactoryFriendCoreTest.TestData
 {
     public class Athlete
     {

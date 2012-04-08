@@ -51,8 +51,6 @@
     <Compile Include="Helpers\PseudoRandomGenerate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templating\Templator.cs" />
-    <Compile Include="TestData\Athlete.cs" />
-    <Compile Include="TestData\AthleteTemplate.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

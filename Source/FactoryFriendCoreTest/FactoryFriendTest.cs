@@ -2,7 +2,6 @@
 {
     using FactoryFriendCore;
     using FactoryFriendCore.Common;
-    using FactoryFriendCore.TestData;
 
     using FactoryFriendCoreTest.TestData;
 
@@ -135,7 +134,7 @@
         }
 
         [Test]
-        public void ShouldLoadInPersonWithAliasValidProperties()
+        public void ShouldLoadInPersonTemplateFactoryWithAliasValidProperties()
         {
             var athlete = FactoryFriend.Build<Athlete>().WithAlias("ValidProperties");
 

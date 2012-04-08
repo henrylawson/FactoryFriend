@@ -2,48 +2,28 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.IO;
     using System.Linq;
     using System.Reflection;
 
     public sealed class Templator
     {
-        private readonly string binPath;
+        private readonly List<Assembly> assemblies;
 
-        public Templator(string currentDomainSearchPath, string executingAssemblyLocation)
+        public Templator(IEnumerable<Assembly> assemblies)
         {
-            this.binPath = DetermineBinPath(currentDomainSearchPath, executingAssemblyLocation);
-        }
-
-        private static string DetermineBinPath(string currentDomainSearchPath, string executingAssemblyLocation)
-        {
-            var possibleBinPath = currentDomainSearchPath;
-            if (String.IsNullOrEmpty(possibleBinPath))
-            {
-                possibleBinPath = Path.GetDirectoryName(executingAssemblyLocation);
-                if (String.IsNullOrEmpty(possibleBinPath))
-                {
-                    throw new InvalidOperationException("Assembly location folder is null or empty");
-                }
-            }
-            return possibleBinPath;
-        }
-
-        private IEnumerable<string> FindAllAssemblyPaths()
-        {
-            var assemblyPaths = Directory.GetFiles(this.binPath, "*.dll");
-            return assemblyPaths;
+            this.assemblies = assemblies.ToList();
         }
 
         public IList<Type> GatherTemplates()
         {
             var templateInstances = new List<Type>();
-            var assemblyPaths = this.FindAllAssemblyPaths();
-            foreach (var assembly in assemblyPaths.Select(Assembly.LoadFrom))
-            {
-                templateInstances.AddRange(assembly.GetTypes().Where(t => t.IsClass && typeof(IFactoryFriendTemplate).IsAssignableFrom(t)));
-            }
+            assemblies.ForEach(assembly => templateInstances.AddRange(assembly.GetTypes().Where(TypeIsDerivedFromTemplateInterface)));
             return templateInstances;
+        }
+
+        private static bool TypeIsDerivedFromTemplateInterface(Type type)
+        {
+            return type.IsClass && typeof(IFactoryFriendTemplate).IsAssignableFrom(type);
         }
 
         public IList<MethodInfo> GatherMethodInfosForTemplates()

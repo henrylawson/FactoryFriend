@@ -1,5 +1,7 @@
-﻿namespace FactoryFriendCore.TestData
+﻿namespace FactoryFriendCoreTest.TestData
 {
+    using FactoryFriendCore;
+
     public class AthleteTemplate : IFactoryFriendTemplate
     {
         public Athlete ValidProperties(Athlete entity)

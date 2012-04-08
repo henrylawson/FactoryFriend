@@ -45,6 +45,8 @@
     <Compile Include="Helpers\PseudoRandomGenerateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templating\TemplatorTest.cs" />
+    <Compile Include="TestData\Athlete.cs" />
+    <Compile Include="TestData\AthleteTemplate.cs" />
     <Compile Include="TestData\FirstTemplate.cs" />
     <Compile Include="TestData\SecondTemplate.cs" />
     <Compile Include="TestData\Contact.cs" />
