@@ -198,7 +198,9 @@ public class PersonTemplate : IFactoryFriendTemplate
 }
 ```
 
-The last one is a little bit silly but I'm sure you can see the potential FactoryFriend has.
+The last one is a little bit silly but I'm sure you can see the potential FactoryFriend 
+has to be both extremelly useful and a little confusing. Like most tools, use sparingly
+and only where appropriate to get the most value.
 
 ## Where can I learn more?
 For more usage examples see the `FactoryFriendCore.Test` project in the 
