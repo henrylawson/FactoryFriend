@@ -1,7 +1,7 @@
-﻿namespace FactoryFriendCoreTest.Templating
+﻿namespace FactoryFriendCore.Test.Templating
 {
     using System;
-    
+
     using FactoryFriendCore.Templating;
 
     using NUnit.Framework;

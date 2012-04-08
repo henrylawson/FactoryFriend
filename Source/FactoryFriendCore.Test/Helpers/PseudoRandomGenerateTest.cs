@@ -1,4 +1,4 @@
-﻿namespace FactoryFriendCoreTest.Helpers
+﻿namespace FactoryFriendCore.Test.Helpers
 {
     using FactoryFriendCore.Helpers;
 

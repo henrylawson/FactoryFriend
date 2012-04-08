@@ -1,4 +1,4 @@
-﻿namespace FactoryFriendCoreTest.TestData
+﻿namespace FactoryFriendCore.Test.TestData
 {
     using FactoryFriendCore;
     using FactoryFriendCore.Attributes;

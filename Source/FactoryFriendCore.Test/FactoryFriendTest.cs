@@ -1,9 +1,8 @@
-﻿namespace FactoryFriendCoreTest
+﻿namespace FactoryFriendCore.Test
 {
     using FactoryFriendCore;
     using FactoryFriendCore.Common;
-
-    using FactoryFriendCoreTest.TestData;
+    using FactoryFriendCore.Test.TestData;
 
     using NUnit.Framework;
 
@@ -84,8 +83,7 @@
         }
 
         [Test]
-        [ExpectedException(typeof(EntityNotFoundException),
-            ExpectedMessage = "FactoryFriend could not find a default \"FactoryFriendCoreTest.TestData.Contact\" entity factory")]
+        [ExpectedException(typeof(EntityNotFoundException))]
         public void ShouldBeAbleToClearFactory()
         {
             FactoryFriend.Define<Contact>().As(ValidAthlete);
@@ -96,16 +94,14 @@
         }
 
         [Test]
-        [ExpectedException(typeof(EntityNotFoundException),
-            ExpectedMessage = "FactoryFriend could not find a \"FactoryFriendCoreTest.TestData.Contact\" entity factory for alias \"Valid\"")]
+        [ExpectedException(typeof(EntityNotFoundException))]
         public void ShouldGetExceptionWhenCallingBuildOnNonExistentFactory()
         {
             FactoryFriend.Build<Contact>("Valid");
         }
 
         [Test]
-        [ExpectedException(typeof(EntityNotFoundException),
-            ExpectedMessage = "FactoryFriend could not find a \"FactoryFriendCoreTest.TestData.Contact\" entity factory for alias \"Valid\"")]
+        [ExpectedException(typeof(EntityNotFoundException))]
         public void ShouldGetExceptionWhenCallingExtendOnNonExistentFactory()
         {
             FactoryFriend.Extend<Contact>("Valid", "NewFactory").As(x => x);

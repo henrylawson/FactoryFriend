@@ -9,8 +9,8 @@
 
 /Source/FactoryFriendCore/bin
 /Source/FactoryFriendCore/obj
-/Source/FactoryFriendCoreTest/bin
-/Source/FactoryFriendCoreTest/obj
+/Source/FactoryFriendCore.Test/bin
+/Source/FactoryFriendCore.Test/obj
 
 /Tools/nant-0.91/*
 !/Tools/nant-0.91/DOWNLOAD_AND_EXTRACT_HERE

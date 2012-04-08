@@ -1,6 +1,6 @@
-﻿namespace FactoryFriendCoreTest.TestData
+namespace FactoryFriendCore.Test.TestData
 {
-    public class Contact
+    public class Athlete
     {
         public int Id { get; set; }
 

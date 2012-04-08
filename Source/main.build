@@ -26,7 +26,7 @@
   
 	<target name="test" description="Tests the compilation" depends="clean, compile">
 		<exec program="${tooldir}\NUnit-2.6.0.12051\bin\nunit-console.exe">
-			<arg value="${build.dir}\FactoryFriendCoreTest.dll" />
+			<arg value="${build.dir}\FactoryFriendCore.Test.dll" />
 			<arg value="/out:${build.dir}\TestResult.txt" />
 		</exec>
 	</target>
