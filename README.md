@@ -55,7 +55,7 @@ FactoryFriend.Define<Person>("WithValidProperties").As(x =>
 	});
 ```
 ### Using Templates
-A tempate is simply a class that extends the `IFactoryFriendTemplate` 
+A template is simply a class that extends the `IFactoryFriendTemplate` 
 interface. FactoryFriend searches the assemblies and uses reflection
 to find and load your templates at run time. 
 
@@ -119,12 +119,13 @@ public class PersonTemplate : IFactoryFriendTemplate
 Now that you have defined and extended your factories, its now time to get an object
 out of them. A fresh object is returned, with the defined properties set by calling:
 
-```
+```c#
 var personWithValidProperties = FactoryFriend.Build<Person>("WithValidProperties");
 var personWithNoId = FactoryFriend.Build<Person>("WithNoId");
 ```
 	
 Not that for the above objects, all statements below are true.
+
 ```c#
 // For personWithValidProperties, made using "WithValidProperties" factory
 Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
@@ -141,7 +142,7 @@ Assert.That(personWithValidProperties.Id, Is.EqualTo(0));
 To clear out your Inline Notation defined and extended factories, simply call:
 
 ```c#
-	FactoryFriend.Clear();
+FactoryFriend.Clear();
 ```
 
 Your Template defined factories stay defined for the entire lifetime 
