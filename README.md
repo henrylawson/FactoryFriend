@@ -28,12 +28,12 @@ the `Browse` tab and then simply navigate to and then select the
 The preceeding examples assume the existence of the below domain model class:
 
 ```c#
-	public class Person
-    {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-    }
+public class Person
+{
+	public int Id { get; set; }
+	public string FirstName { get; set; }
+	public string LastName { get; set; }
+}
 ```
 
 ## Define your Factory
@@ -45,26 +45,29 @@ The below exmaples define a factory with the alias `WithValidProperties`. The
 alias is used to `Build` and `Extend` the factory later.
 ### Using Inline Notation
 
-	FactoryFriend.Define<Person>("WithValidProperties").As(x => 
-		{
-			x.Id = 22;
-			x.FirstName = "Joe";
-			x.LastName = "Bloggs";
-			return x;
-		});
-
+```c#
+FactoryFriend.Define<Person>("WithValidProperties").As(x => 
+	{
+		x.Id = 22;
+		x.FirstName = "Joe";
+		x.LastName = "Bloggs";
+		return x;
+	});
+```
 ### Using Templates
 
-	public class PersonTemplate : IFactoryFriendTemplate
-    {
-        public Person WithValidProperties(Person x)
-        {
-            x.Id = 22;
-            x.FirstName = "Joe";
-            x.LastName = "Bloggs";
-            return x;
-        }
+```c#
+public class PersonTemplate : IFactoryFriendTemplate
+{
+	public Person WithValidProperties(Person x)
+	{
+		x.Id = 22;
+		x.FirstName = "Joe";
+		x.LastName = "Bloggs";
+		return x;
 	}
+}
+```
 	
 ## Why the two methods?
 FactoryFriend has two techniques for object definition purely for flexibility. 
@@ -85,45 +88,54 @@ the `Id` to be 0. These factories will still return an object with the previousl
 
 ### Using Inline Notation
 
-	FactoryFriend.Extend<Person>("WithValidProperties", "WithNoId").As(x => 
-		{
-			x.Id = 0;
-			return x;
-		});
-
-### Using Templates
-
-	[Extends("ValidProperties")]
-	public Person WithNoId(Person x)
+```c#
+FactoryFriend.Extend<Person>("WithValidProperties", "WithNoId").As(x => 
 	{
 		x.Id = 0;
 		return x;
-	}
+	});
+```
+
+### Using Templates
+
+```c#
+[Extends("ValidProperties")]
+public Person WithNoId(Person x)
+{
+	x.Id = 0;
+	return x;
+}
+```
 
 ## Using your defined Factories
 Now that you have defined and extended your factories, its now time to get an object
 out of them. A fresh object is returned, with the defined properties set by calling:
 
-	var personWithValidProperties = FactoryFriend.Build<Person>("WithValidProperties");
-	var personWithNoId = FactoryFriend.Build<Person>("WithNoId");
+```
+var personWithValidProperties = FactoryFriend.Build<Person>("WithValidProperties");
+var personWithNoId = FactoryFriend.Build<Person>("WithNoId");
+```
 	
 Not that for the above objects, all statements below are true.
+```c#
+// For personWithValidProperties, made using "WithValidProperties" factory
+Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
+Assert.That(personWithValidProperties.LastName, Is.EqualTo("Bloggs"));
+Assert.That(personWithValidProperties.Id, Is.EqualTo(22));
 
-	// For personWithValidProperties, made using "WithValidProperties" factory
-	Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
-    Assert.That(personWithValidProperties.LastName, Is.EqualTo("Bloggs"));
-    Assert.That(personWithValidProperties.Id, Is.EqualTo(22));
-	
-	// For personWithNoId, made using "WithValidProperties" factory
-	Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
-    Assert.That(personWithValidProperties.LastName, Is.EqualTo("Bloggs"));
-    Assert.That(personWithValidProperties.Id, Is.EqualTo(0));
-	
+// For personWithNoId, made using "WithValidProperties" factory
+Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
+Assert.That(personWithValidProperties.LastName, Is.EqualTo("Bloggs"));
+Assert.That(personWithValidProperties.Id, Is.EqualTo(0));
+```
+
 ## Clearing out all your defined Factories
 To clear out your Inline Notation defined and extended factories, simply call:
 
+```c#
 	FactoryFriend.Clear();
-	
+```
+
 Your Template defined factories stay defined for the entire lifetime 
 FactoryFriend. Clearing out Inline Notation defined factories may be handy
 to be used in `TearDown` methods.
