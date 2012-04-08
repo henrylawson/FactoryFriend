@@ -19,8 +19,8 @@
 
         private FactoryFriend()
         {
-            this.factories = new Dictionary<string, IList<object>>();
-            this.InitializeTemplates();
+            factories = new Dictionary<string, IList<object>>();
+            InitializeTemplates();
         }
 
         private void InitializeTemplates()
@@ -55,7 +55,7 @@
 
         internal void Add<TEntity>(string entityFactoryAlias, string newEntityFactoryAlias, FactoryFunction<TEntity> objectFunction) where TEntity : new()
         {
-            var oldObjectFunctionList = this.GetObjectFunctionList<TEntity>(entityFactoryAlias);
+            var oldObjectFunctionList = GetObjectFunctionList<TEntity>(entityFactoryAlias);
             var newObjectFunctionList = new List<object>(oldObjectFunctionList) { objectFunction };
             Set(typeof(TEntity), newEntityFactoryAlias, newObjectFunctionList);
         }
@@ -109,11 +109,11 @@
         private IEnumerable<object> GetObjectFunctionList<TEntity>(string entityFactoryAlias) where TEntity : new()
         {
             var key = CreateKey(typeof(TEntity), entityFactoryAlias);
-            if (!this.factories.ContainsKey(key))
+            if (!factories.ContainsKey(key))
             {
                 throw new EntityNotFoundException(CreateEntityNotFoundMessage(typeof(TEntity), entityFactoryAlias));
             }
-            return this.factories[key];
+            return factories[key];
         }
 
         private static string CreateKey(Type entityType, string entityFactoryAlias)

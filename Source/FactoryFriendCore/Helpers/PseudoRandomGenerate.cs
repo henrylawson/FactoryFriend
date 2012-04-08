@@ -82,7 +82,7 @@
         {
             var loremArray = LoremIpsumString.Split(' ');
             var stringBuilder = new StringBuilder();
-            for (int i = 0; i < wordCount; i++)
+            for (var i = 0; i < wordCount; i++)
             {
                 var rndIndex = Random.Next(0, loremArray.Length);
                 stringBuilder.Append(string.Format("{0} ", loremArray[rndIndex]));

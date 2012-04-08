@@ -28,7 +28,7 @@
 
         public IList<MethodInfo> GatherMethodInfosForTemplates()
         {
-            var types = this.GatherTemplates();
+            var types = GatherTemplates();
             var factoryMethodInfos = from type in types
                                      from methodInfo in type.GetMethods()
                                      where types.Contains(methodInfo.DeclaringType)

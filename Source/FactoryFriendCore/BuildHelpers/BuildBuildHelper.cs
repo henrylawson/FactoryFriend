@@ -11,12 +11,12 @@ namespace FactoryFriendCore.BuildHelpers
 
         public TEntity WithAlias(string entityFactoryAlias)
         {
-            return this.FactoryFriend.Get<TEntity>(entityFactoryAlias);
+            return FactoryFriend.Get<TEntity>(entityFactoryAlias);
         }
 
         public TEntity Default()
         {
-            return this.WithAlias(string.Empty);
+            return WithAlias(string.Empty);
         }
     }
 }

@@ -1,10 +1,7 @@
 ﻿namespace FactoryFriendCoreTest.Templating
 {
     using System;
-    using System.IO;
-    using System.Reflection;
-
-    using FactoryFriendCore;
+    
     using FactoryFriendCore.Templating;
 
     using NUnit.Framework;

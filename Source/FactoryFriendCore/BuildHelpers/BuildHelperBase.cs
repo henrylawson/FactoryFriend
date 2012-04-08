@@ -6,7 +6,7 @@ namespace FactoryFriendCore.BuildHelpers
 
         internal BuildHelperBase(FactoryFriend factoryFriend)
         {
-            this.FactoryFriend = factoryFriend;
+            FactoryFriend = factoryFriend;
         }
     }
 }

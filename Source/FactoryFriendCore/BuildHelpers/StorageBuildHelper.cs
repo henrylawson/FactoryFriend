@@ -21,13 +21,13 @@ namespace FactoryFriendCore.BuildHelpers
 
         public void As(FactoryFriend.FactoryFunction<TEntity> objectFunction)
         {
-            if (string.IsNullOrEmpty(this.newAlias))
+            if (string.IsNullOrEmpty(newAlias))
             {
-                this.FactoryFriend.Add(this.entityFactoryAlias, objectFunction);
+                FactoryFriend.Add(entityFactoryAlias, objectFunction);
             }
             else
             {
-                this.FactoryFriend.Add(this.entityFactoryAlias, this.newAlias, objectFunction);   
+                FactoryFriend.Add(entityFactoryAlias, newAlias, objectFunction);   
             }
         }
     }

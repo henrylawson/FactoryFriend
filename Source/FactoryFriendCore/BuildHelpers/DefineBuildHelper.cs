@@ -11,12 +11,12 @@ namespace FactoryFriendCore.BuildHelpers
 
         public StorageBuildHelper<TEntity> WithAlias(string alias)
         {
-            return new StorageBuildHelper<TEntity>(this.FactoryFriend, alias);
+            return new StorageBuildHelper<TEntity>(FactoryFriend, alias);
         }
         
         public void As(FactoryFriend.FactoryFunction<TEntity> objectFunction)
         {
-            new StorageBuildHelper<TEntity>(this.FactoryFriend, string.Empty).As(objectFunction);
+            new StorageBuildHelper<TEntity>(FactoryFriend, string.Empty).As(objectFunction);
         }
     }
 }

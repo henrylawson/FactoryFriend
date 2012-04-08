@@ -13,13 +13,13 @@ namespace FactoryFriendCore.BuildHelpers
 
         public ExtendBuildHelper<TEntity> WithAlias(string alias)
         {
-            this.entityFactoryAlias = alias;
+            entityFactoryAlias = alias;
             return this;
         }
 
         public StorageBuildHelper<TEntity> ToBe(string newAlias)
         {
-            return new StorageBuildHelper<TEntity>(this.FactoryFriend, this.entityFactoryAlias, newAlias);
+            return new StorageBuildHelper<TEntity>(FactoryFriend, entityFactoryAlias, newAlias);
         }
     }
 }
