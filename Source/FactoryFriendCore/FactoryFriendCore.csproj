@@ -44,6 +44,7 @@
     <Compile Include="Common\EntityNotFoundException.cs" />
     <Compile Include="BuildHelpers\StorageBuildHelper.cs" />
     <Compile Include="FactoryFriend.cs" />
+    <Compile Include="FactoryFriendInstance.cs" />
     <Compile Include="IFactoryFriendTemplate.cs" />
     <Compile Include="Helpers\PseudoRandomGenerate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

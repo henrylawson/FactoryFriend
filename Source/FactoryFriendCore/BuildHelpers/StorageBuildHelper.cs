@@ -5,16 +5,16 @@ namespace FactoryFriendCore.BuildHelpers
     {
         private readonly string entityFactoryAlias;
         private readonly string newAlias;
-        private readonly FactoryFriend factoryFriend;
+        private readonly FactoryFriendInstance factoryFriend;
 
-        internal StorageBuildHelper(FactoryFriend factoryFriend, string entityFactoryAlias, string newAlias)
+        internal StorageBuildHelper(FactoryFriendInstance factoryFriend, string entityFactoryAlias, string newAlias)
         {
             this.factoryFriend = factoryFriend;
             this.entityFactoryAlias = entityFactoryAlias;
             this.newAlias = newAlias;
         }
 
-        internal StorageBuildHelper(FactoryFriend factoryFriend, string entityFactoryAlias)
+        internal StorageBuildHelper(FactoryFriendInstance factoryFriend, string entityFactoryAlias)
             : this(factoryFriend, entityFactoryAlias, string.Empty)
         {
         }
