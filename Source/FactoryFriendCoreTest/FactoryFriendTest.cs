@@ -157,5 +157,41 @@
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
             Assert.That(athlete.Id, Is.EqualTo(99));
         }
+
+        [Test]
+        public void ShouldHavePropertiesExtendedByTemplator()
+        {
+            var athlete = FactoryFriend.Build<Athlete>("InvalidProperties");
+
+            Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
+            Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
+            Assert.That(athlete.Id, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void ShouldBeAbleToExtendExtendedTemplatorFactory()
+        {
+            FactoryFriend.Extend<Athlete>("InvalidProperties", "CustomExtendedInvalidProperties").As(x =>
+                { 
+                    x.LastName = "Ralf";
+                    return x;
+                });
+
+            var athlete = FactoryFriend.Build<Athlete>("CustomExtendedInvalidProperties");
+
+            Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
+            Assert.That(athlete.LastName, Is.EqualTo("Ralf"));
+            Assert.That(athlete.Id, Is.EqualTo(0));
+        }
+
+        [Test]
+        public void ShouldBeAbleToDeclareMultipleExtensionsInTemplate()
+        {
+            var athlete = FactoryFriend.Build<Athlete>("HasTwoExtends");
+
+            Assert.That(athlete.FirstName, Is.EqualTo("Tony"));
+            Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
+            Assert.That(athlete.Id, Is.EqualTo(88));
+        }
     }
 }

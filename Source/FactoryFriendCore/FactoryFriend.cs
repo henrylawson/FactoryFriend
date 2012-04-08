@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Reflection;
 
+    using FactoryFriendCore.Attributes;
     using FactoryFriendCore.BuildHelpers;
     using FactoryFriendCore.Common;
     using FactoryFriendCore.Templating;
@@ -44,7 +45,7 @@
 
         public static TEntity Build<TEntity>(string entityFactoryAlias) where TEntity : new()
         {
-            return Instance.Get<TEntity>(entityFactoryAlias);
+            return Instance.Get(new TEntity(), entityFactoryAlias);
         }
 
         public static TEntity Build<TEntity>() where TEntity : new()
@@ -80,14 +81,13 @@
             Set(typeof(TEntity), entityFactoryAlias, new List<object> { entity });
         }
 
-        internal TEntity Get<TEntity>(string entityFactoryAlias) where TEntity : new()
+        internal TEntity Get<TEntity>(TEntity entity, string entityFactoryAlias) where TEntity : new()
         {
             var objectFunctionList = GetObjectFunctionList<TEntity>(entityFactoryAlias);
-            var entity = new TEntity();
             return objectFunctionList.Aggregate(entity, ApplyCorrectObjectFunctionToEntity);
         }
 
-        private static TEntity ApplyCorrectObjectFunctionToEntity<TEntity>(TEntity entity, object objectFunction) where TEntity : new()
+        private TEntity ApplyCorrectObjectFunctionToEntity<TEntity>(TEntity entity, object objectFunction) where TEntity : new()
         {
             return (objectFunction is MethodInfo)
                        ? ApplyMethodInfoToEntity(entity, objectFunction)
@@ -101,11 +101,24 @@
             return entity;
         }
 
-        private static TEntity ApplyMethodInfoToEntity<TEntity>(TEntity entity, object objectFunction) where TEntity : new()
+        private TEntity ApplyMethodInfoToEntity<TEntity>(TEntity entity, object objectFunction) where TEntity : new()
         {
             var methodInfo = (MethodInfo)objectFunction;
+            var entityFactoryAliass = RetrieveFactoriesDefinedInExtendsAttributesFor(methodInfo);
+            entity = ApplyMethodsDefinedInExtendsAttribute(entity, entityFactoryAliass);
             entity = (TEntity)methodInfo.Invoke(Activator.CreateInstance(methodInfo.DeclaringType), new object[] { entity });
             return entity;
+        }
+
+        private static IEnumerable<string> RetrieveFactoriesDefinedInExtendsAttributesFor(MemberInfo memberInfo)
+        {
+            var extendsAttribute = Attribute.GetCustomAttribute(memberInfo, typeof(Extends)) as Extends;
+            return extendsAttribute == null ? new string[0] : extendsAttribute.EntityFactoryAliass;
+        }
+
+        private TEntity ApplyMethodsDefinedInExtendsAttribute<TEntity>(TEntity entity, IEnumerable<string> entityFactoryAliass) where TEntity : new()
+        {
+            return entityFactoryAliass.Aggregate(entity, Get);
         }
 
         private void Set(Type type, string entityFactoryAlias, IList<object> newObjectFunctionList)
