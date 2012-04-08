@@ -55,6 +55,9 @@ FactoryFriend.Define<Person>("WithValidProperties").As(x =>
 	});
 ```
 ### Using Templates
+A tempate is simply a class that extends the `IFactoryFriendTemplate` 
+interface. FactoryFriend searches the assemblies and uses reflection
+to find and load your templates at run time. 
 
 ```c#
 public class PersonTemplate : IFactoryFriendTemplate
@@ -99,11 +102,16 @@ FactoryFriend.Extend<Person>("WithValidProperties", "WithNoId").As(x =>
 ### Using Templates
 
 ```c#
-[Extends("ValidProperties")]
-public Person WithNoId(Person x)
+public class PersonTemplate : IFactoryFriendTemplate
 {
-	x.Id = 0;
-	return x;
+	// ... Previously defined  "ValidProperties" propertes method
+	
+	[Extends("ValidProperties")]
+	public Person WithNoId(Person x)
+	{
+		x.Id = 0;
+		return x;
+	}
 }
 ```
 
