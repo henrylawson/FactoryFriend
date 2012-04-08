@@ -6,7 +6,7 @@ objects easy and maintainable.
 # Why use FactoryFriend?
 FactoryFriend's true power is seen when utilised alongside a
 testing framework. FactoryFriend can be used to clean up and simplify
-the repetetive creation of domain model entities. Often the same domain
+the repetetive creation of domain model instances. Often the same domain
 models are required but with varying states. These states may be "valid",
 "invalid", "complete" or "incomplete". FactoryFriend allows you to
 define these states in a single location and then provides support for the
