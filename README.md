@@ -26,12 +26,15 @@ the `Browse` tab and then simply navigate to and then select the
 
 ## Before we dive into the code
 The preceeding examples assume the existence of the below domain model class:
+
+```c#
 	public class Person
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
+```
 
 ## Define your Factory
 Before you can use FactoryFriend to build some objects, you have to 
@@ -41,6 +44,7 @@ Notation and Templates.
 The below exmaples define a factory with the alias `WithValidProperties`. The 
 alias is used to `Build` and `Extend` the factory later.
 ### Using Inline Notation
+
 	FactoryFriend.Define<Person>("WithValidProperties").As(x => 
 		{
 			x.Id = 22;
@@ -50,6 +54,7 @@ alias is used to `Build` and `Extend` the factory later.
 		});
 
 ### Using Templates
+
 	public class PersonTemplate : IFactoryFriendTemplate
     {
         public Person WithValidProperties(Person x)
@@ -79,6 +84,7 @@ the `Id` to be 0. These factories will still return an object with the previousl
 `FirstName = "Joe"` and `LastName = "Bloggs"`.
 
 ### Using Inline Notation
+
 	FactoryFriend.Extend<Person>("WithValidProperties", "WithNoId").As(x => 
 		{
 			x.Id = 0;
@@ -86,6 +92,7 @@ the `Id` to be 0. These factories will still return an object with the previousl
 		});
 
 ### Using Templates
+
 	[Extends("ValidProperties")]
 	public Person WithNoId(Person x)
 	{
