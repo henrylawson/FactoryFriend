@@ -4,7 +4,7 @@ FactoryFriend is a simple DSL for defining and creating factories in
 objects easy and maintainable.
 
 # Why use FactoryFriend?
-FactoryFriend's true power is seen when utilised alongside a unit level
+FactoryFriend's true power is seen when utilised alongside a
 testing framework. FactoryFriend can be used to clean up and simplify
 the repetetive creation of domain model entities. Often the same domain
 models are required but with varying states. These states may be "valid",
@@ -14,7 +14,7 @@ extension of these definitions, improving maintainability and reducing the
 complexity of your code.
 
 # Getting Started
-## Download
+## Download the Assembly
 At the moment FactoryFriend isn't ready for release yet. However feel 
 free to pull and compile your own assembly.
 
@@ -42,7 +42,7 @@ define some first! A factory can be defined using two methods, Inline
 Notation and Templates.
 
 The below exmaples define a factory with the alias `WithValidProperties`. The 
-alias is used to `Build` and `Extend` the factory later.
+alias is used to `Build` `Person` instances and `Extend` the factory later.
 ### Using Inline Notation
 
 ```c#
@@ -87,7 +87,7 @@ properties again, FactoryFriend allows you to extend these previously
 defined factories.
 
 The below examples extend our previously defined factory `ValidProperities` 
-changing the `Id` to be 0. These factories will still return an object with 
+changing the `Id` to be `0`. These factories will still return an object with 
 the previously defined `FirstName = "Joe"` and `LastName = "Bloggs"`.
 
 ### Using Inline Notation
@@ -107,7 +107,7 @@ public class PersonTemplate : IFactoryFriendTemplate
 {
 	// ... Previously defined  "ValidProperties" propertes method
 	
-	[Extends("ValidProperties")]
+	[Extends("WithValidProperties")]
 	public Person WithNoId(Person x)
 	{
 		x.Id = 0;
@@ -125,7 +125,7 @@ var personWithValidProperties = FactoryFriend.Build<Person>("WithValidProperties
 var personWithNoId = FactoryFriend.Build<Person>("WithNoId");
 ```
 	
-Not that for the above objects, all statements below are true.
+Note that for the above objects, all statements below are true.
 
 ```c#
 // For personWithValidProperties, made using "WithValidProperties" factory
@@ -146,9 +146,59 @@ To clear out your Inline Notation defined and extended factories, simply call:
 FactoryFriend.Clear();
 ```
 
-Your Template defined factories stay defined for the entire lifetime 
-FactoryFriend. Clearing out Inline Notation defined factories may be handy
-to be used in `TearDown` methods.
+Your Template defined factories stay defined for the entire lifetime of
+FactoryFriend. Clearing out Inline Notation defined factories may be useful
+to clear out definitions/extensions at the end of a test in a `TearDown` 
+method.
+
+## The next level
+The example provided here is quite basic. However the true usefulness of 
+FactoryFriend shines through when objects reference other objects and your
+domain model relationships are more complicated with large ammounts of 
+properties.
+
+The below example assumes the existence of domain classess for `Company`, 
+`Address`, `CreditCard` and `Person`.
+
+```c#
+public class PersonTemplate : IFactoryFriendTemplate
+{
+	public Person WithValidProperties(Person x)
+	{
+		x.Id = 22;
+		x.FirstName = "Joe";
+		x.LastName = "Bloggs";
+		x.Company = FactoryFriend.Build<Company>("WithValidProperties");
+		x.MailingAddress = FactoryFriend.Build<Address>("ForAppartmentInLondon");
+		x.MailingAddress = FactoryFriend.Build<Address>("ForHomeInManchester");
+		x.CreditCard = FactoryFriend.Build<CreditCard>("WithValidProperties");
+		return x;
+	}
+	
+	[Extends("WithValidProperties")]
+	public Person WithInvalidCreditCard(Person x)
+	{
+		x.CreditCard = FactoryFriend.Build<CreditCard>("ThatIsExpired");
+		return x;
+	}
+	
+	[Extends("WithValidProperties")]
+	public Person ThatIsUnemployed(Person x)
+	{
+		x.Company = null;
+		return x;
+	}
+	
+	[Extends("ThatIsUnemployed", "WithInvalidCreditCard")]
+	public Person ThatIsUnemployedWithExpiredCreditCardAndNoMailingAddress(Person x)
+	{
+		x.MailingAddress = null;
+		return x;
+	}
+}
+```
+
+The last one is a little bit silly but I'm sure you can see the potential FactoryFriend has.
 
 ## Where can I learn more?
 For more usage examples see the `FactoryFriendCore.Test` project in the 
