@@ -10,7 +10,7 @@ the repetetive creation of domain model entities. Often the same domain
 models are required but with varying states. These states may be "valid",
 "invalid", "complete" or "incomplete". FactoryFriend allows you to
 define these states in a single location and then provides support for the
-extension of these definitions, improving maintainability and reducing 
+extension of these definitions, improving maintainability and reducing the
 complexity of your code.
 
 # Getting Started
@@ -83,11 +83,12 @@ them all in a single maintainable place.
 Often when dealing with domain model entities you will have one base object 
 that you use to derive various other objects. The derived objects will often 
 have one or two properties different to the base. To avoid redefining these
-properties again, FactoryFriend allows you to extend these previously defined factories.
+properties again, FactoryFriend allows you to extend these previously 
+defined factories.
 
-The below examples extend our previously defined factory `ValidProperities` changing
-the `Id` to be 0. These factories will still return an object with the previously defined
-`FirstName = "Joe"` and `LastName = "Bloggs"`.
+The below examples extend our previously defined factory `ValidProperities` 
+changing the `Id` to be 0. These factories will still return an object with 
+the previously defined `FirstName = "Joe"` and `LastName = "Bloggs"`.
 
 ### Using Inline Notation
 
@@ -150,9 +151,8 @@ FactoryFriend. Clearing out Inline Notation defined factories may be handy
 to be used in `TearDown` methods.
 
 ## Where can I learn more?
-1. For more usage examples see the FactoryFriendCore.Test project in the source 
-code.
-2. The source code documentation may also be useful.
+For more usage examples see the `FactoryFriendCore.Test` project in the 
+source code. The source code documentation may also be useful.
 
 # Contributing
 1. Fork the official repository.
