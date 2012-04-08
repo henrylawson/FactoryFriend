@@ -10,7 +10,6 @@
     [TestFixture]
     public class FactoryFriendTest
     {
-
         private static Contact ValidAthlete(Contact entity)
         {
             entity.FirstName = "Joe";
@@ -30,7 +29,7 @@
         {
             FactoryFriend.Define<Contact>().As(ValidAthlete);
 
-            var athlete = FactoryFriend.Build<Contact>().Default();
+            var athlete = FactoryFriend.Build<Contact>();
 
             Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
@@ -40,9 +39,9 @@
         [Test]
         public void ShouldBeAbleToDefineAFactoryUsingWithAlias()
         {
-            FactoryFriend.Define<Contact>().WithAlias("AllPropertiesSet").As(ValidAthlete);
+            FactoryFriend.Define<Contact>("AllPropertiesSet").As(ValidAthlete);
 
-            var athlete = FactoryFriend.Build<Contact>().WithAlias("AllPropertiesSet");
+            var athlete = FactoryFriend.Build<Contact>("AllPropertiesSet");
 
             Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
@@ -52,14 +51,14 @@
         [Test]
         public void ShouldBeAbleToExtendAFactoryEntityWithAlias()
         {
-            FactoryFriend.Define<Contact>().WithAlias("AllPropertiesSet").As(ValidAthlete);
-            FactoryFriend.Extend<Contact>().WithAlias("AllPropertiesSet").ToBe("NoId").As(x =>
+            FactoryFriend.Define<Contact>("AllPropertiesSet").As(ValidAthlete);
+            FactoryFriend.Extend<Contact>("AllPropertiesSet", "NoId").As(x =>
                 {
                     x.Id = 0;
                     return x;
                 });
 
-            var athlete = FactoryFriend.Build<Contact>().WithAlias("NoId");
+            var athlete = FactoryFriend.Build<Contact>("NoId");
 
             Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
@@ -70,14 +69,14 @@
         public void ShouldBeAbleToExtendAFactoryEntityWithoutUsingAlias()
         {
             FactoryFriend.Define<Contact>().As(ValidAthlete);
-            FactoryFriend.Extend<Contact>().ToBe("NamedTom").As(x =>
+            FactoryFriend.Extend<Contact>("NamedTom").As(x =>
                 {
                     x.FirstName = "Tommy";
                     x.LastName = "Churchile";
                     return x;
                 });
 
-            var athlete = FactoryFriend.Build<Contact>().WithAlias("NamedTom");
+            var athlete = FactoryFriend.Build<Contact>("NamedTom");
 
             Assert.That(athlete.FirstName, Is.EqualTo("Tommy"));
             Assert.That(athlete.LastName, Is.EqualTo("Churchile"));
@@ -93,7 +92,7 @@
             
             FactoryFriend.Clear();
 
-            FactoryFriend.Build<Contact>().Default();
+            FactoryFriend.Build<Contact>();
         }
 
         [Test]
@@ -101,7 +100,7 @@
             ExpectedMessage = "FactoryFriend could not find a \"FactoryFriendCoreTest.TestData.Contact\" entity factory for alias \"Valid\"")]
         public void ShouldGetExceptionWhenCallingBuildOnNonExistentFactory()
         {
-            FactoryFriend.Build<Contact>().WithAlias("Valid");
+            FactoryFriend.Build<Contact>("Valid");
         }
 
         [Test]
@@ -109,7 +108,7 @@
             ExpectedMessage = "FactoryFriend could not find a \"FactoryFriendCoreTest.TestData.Contact\" entity factory for alias \"Valid\"")]
         public void ShouldGetExceptionWhenCallingExtendOnNonExistentFactory()
         {
-            FactoryFriend.Extend<Contact>().WithAlias("Valid").ToBe("NewFactory").As(x => x);
+            FactoryFriend.Extend<Contact>("Valid", "NewFactory").As(x => x);
         }
 
         [Test]
@@ -127,8 +126,8 @@
         {
             FactoryFriend.Define<Contact>().As(ValidAthlete);
 
-            var firstInstance = FactoryFriend.Build<Contact>().Default();
-            var secondInstance = FactoryFriend.Build<Contact>().Default();
+            var firstInstance = FactoryFriend.Build<Contact>();
+            var secondInstance = FactoryFriend.Build<Contact>();
 
             Assert.That(firstInstance, Is.Not.SameAs(secondInstance));
         }
@@ -136,7 +135,7 @@
         [Test]
         public void ShouldLoadInPersonTemplateFactoryWithAliasValidProperties()
         {
-            var athlete = FactoryFriend.Build<Athlete>().WithAlias("ValidProperties");
+            var athlete = FactoryFriend.Build<Athlete>("ValidProperties");
 
             Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));
@@ -146,13 +145,13 @@
         [Test]
         public void ShouldBeAbleToExtendTemplateLoadedFactory()
         {
-            FactoryFriend.Extend<Athlete>().WithAlias("ValidProperties").ToBe("Remake").As(x =>
+            FactoryFriend.Extend<Athlete>("ValidProperties", "Remake").As(x =>
                 { 
                     x.Id = 99;
                     return x;
                 });
 
-            var athlete = FactoryFriend.Build<Athlete>().WithAlias("Remake");
+            var athlete = FactoryFriend.Build<Athlete>("Remake");
 
             Assert.That(athlete.FirstName, Is.EqualTo("Joe"));
             Assert.That(athlete.LastName, Is.EqualTo("Bloggs"));

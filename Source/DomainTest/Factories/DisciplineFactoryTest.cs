@@ -16,7 +16,7 @@
         public void SetUp()
         {
             new DisciplineFactory();
-            disciplineWithAllPropertiesSet = FactoryFriend.Build<Discipline>().Default();
+            disciplineWithAllPropertiesSet = FactoryFriend.Build<Discipline>();
         }
 
         [TearDown]

@@ -32,19 +32,34 @@
             }
         }
 
-        public static DefineBuildHelper<TEntity> Define<TEntity>() where TEntity : new()
+        public static StorageBuildHelper<TEntity> Define<TEntity>(string entityFactoryAlias) where TEntity : new()
         {
-            return new DefineBuildHelper<TEntity>(Instance);
+            return new StorageBuildHelper<TEntity>(Instance, entityFactoryAlias);
         }
 
-        public static BuildBuildHelper<TEntity> Build<TEntity>() where TEntity : new()
+        public static StorageBuildHelper<TEntity> Define<TEntity>() where TEntity : new()
         {
-            return new BuildBuildHelper<TEntity>(Instance);
+            return Define<TEntity>(string.Empty);
         }
 
-        public static ExtendBuildHelper<TEntity> Extend<TEntity>() where TEntity : new()
+        public static TEntity Build<TEntity>(string entityFactoryAlias) where TEntity : new()
         {
-            return new ExtendBuildHelper<TEntity>(Instance);
+            return Instance.Get<TEntity>(entityFactoryAlias);
+        }
+
+        public static TEntity Build<TEntity>() where TEntity : new()
+        {
+            return Build<TEntity>(string.Empty);
+        }
+
+        public static StorageBuildHelper<TEntity> Extend<TEntity>(string originalEntityFactoryAlias, string newAlias) where TEntity : new()
+        {
+            return new StorageBuildHelper<TEntity>(Instance, originalEntityFactoryAlias, newAlias);
+        }
+
+        public static StorageBuildHelper<TEntity> Extend<TEntity>(string newAlias) where TEntity : new()
+        {
+            return new StorageBuildHelper<TEntity>(Instance, string.Empty, newAlias);
         }
 
         public static void Clear()

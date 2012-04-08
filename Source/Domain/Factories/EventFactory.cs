@@ -12,7 +12,7 @@
             FactoryFriend.Define<Event>().As(x =>
                 { 
                     x.Id = PseudoRandomGenerate.Integer;
-                    x.Discipline = FactoryFriend.Build<Discipline>().Default();
+                    x.Discipline = FactoryFriend.Build<Discipline>();
                     x.Distance = 100.00m;
                     return x;
                 });

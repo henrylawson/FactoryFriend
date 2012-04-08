@@ -1,33 +1,33 @@
 namespace FactoryFriendCore.BuildHelpers
 {
-    public sealed class StorageBuildHelper<TEntity> : BuildHelperBase
+    public sealed class StorageBuildHelper<TEntity>
         where TEntity : new()
     {
         private readonly string entityFactoryAlias;
         private readonly string newAlias;
+        private readonly FactoryFriend factoryFriend;
 
         internal StorageBuildHelper(FactoryFriend factoryFriend, string entityFactoryAlias, string newAlias)
-            : base(factoryFriend)
         {
+            this.factoryFriend = factoryFriend;
             this.entityFactoryAlias = entityFactoryAlias;
             this.newAlias = newAlias;
         }
 
         internal StorageBuildHelper(FactoryFriend factoryFriend, string entityFactoryAlias)
-            : base(factoryFriend)
+            : this(factoryFriend, entityFactoryAlias, string.Empty)
         {
-            this.entityFactoryAlias = entityFactoryAlias;
         }
 
         public void As(FactoryFriend.FactoryFunction<TEntity> objectFunction)
         {
             if (string.IsNullOrEmpty(newAlias))
             {
-                FactoryFriend.Add(entityFactoryAlias, objectFunction);
+                factoryFriend.Add(entityFactoryAlias, objectFunction);
             }
             else
             {
-                FactoryFriend.Add(entityFactoryAlias, newAlias, objectFunction);   
+                factoryFriend.Add(entityFactoryAlias, newAlias, objectFunction);   
             }
         }
     }

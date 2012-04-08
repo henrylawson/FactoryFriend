@@ -20,7 +20,7 @@
             new DisciplineFactory();
             new EventFactory();
             new ResultFactory();
-            resultWithAllPropertiesSet = FactoryFriend.Build<Result>().Default();
+            resultWithAllPropertiesSet = FactoryFriend.Build<Result>();
         }
 
         [TearDown]

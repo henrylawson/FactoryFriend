@@ -16,7 +16,7 @@
         public void SetUp()
         {
             new CompetitionFactory();
-            this.competitionWithAllPropertiesSet = FactoryFriend.Build<Competition>().Default();
+            this.competitionWithAllPropertiesSet = FactoryFriend.Build<Competition>();
         }
 
         [TearDown]

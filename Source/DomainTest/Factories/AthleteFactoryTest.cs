@@ -16,7 +16,7 @@
         public void SetUp()
         {
             new AthleteFactory();
-            athleteWithAllPropertiesSet = FactoryFriend.Build<Athlete>().Default();
+            athleteWithAllPropertiesSet = FactoryFriend.Build<Athlete>();
         }
 
         [TearDown]

@@ -17,7 +17,7 @@
         {
             new DisciplineFactory();
             new EventFactory();
-            eventWithPropertiesSet = FactoryFriend.Build<Event>().Default();
+            eventWithPropertiesSet = FactoryFriend.Build<Event>();
         }
 
         [TearDown]

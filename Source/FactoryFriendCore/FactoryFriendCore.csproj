@@ -41,12 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\EntityNotFoundException.cs" />
-    <Compile Include="BuildHelpers\BuildBuildHelper.cs" />
-    <Compile Include="BuildHelpers\DefineBuildHelper.cs" />
     <Compile Include="BuildHelpers\StorageBuildHelper.cs" />
-    <Compile Include="BuildHelpers\ExtendBuildHelper.cs" />
     <Compile Include="FactoryFriend.cs" />
-    <Compile Include="BuildHelpers\BuildHelperBase.cs" />
     <Compile Include="IFactoryFriendTemplate.cs" />
     <Compile Include="Helpers\PseudoRandomGenerate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
