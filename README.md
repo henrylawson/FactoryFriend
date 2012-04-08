@@ -1,6 +1,6 @@
 # Introduction
-Factory friend is a simple DSL for defining and creating factories in 
-.Net. Factory Friend makes creating factories for a large number of
+FactoryFriend is a simple DSL for defining and creating factories in 
+.Net. FactoryFriend makes creating factories for a large number of
 objects easy and maintainable.
 
 # Why use FactoryFriend?
@@ -19,9 +19,9 @@ At the moment FactoryFriend isn't ready for release yet. However feel
 free to pull and compile your own assembly.
 
 ## Reference the Assembly
-In Visual Studio, in the Solution Explorer window. Expand your .Net 
-project folder, right click the References folder. Select Add Reference, 
-the Browse tab and then simply navigate to and then select the
+In Visual Studio, in the `Solution Explorer` window. Expand your .Net 
+project folder, right click the `References` folder. Select `Add Reference`, 
+the `Browse` tab and then simply navigate to and then select the
 `FactoryFriendCore.dll`.
 
 ## Define your Factory
