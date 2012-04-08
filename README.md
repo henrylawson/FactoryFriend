@@ -75,8 +75,8 @@ have one or two properties different to the base. To avoid redefining these
 properties again, FactoryFriend allows you to extend these previously defined factories.
 
 The below examples extend our previously defined factory `ValidProperities` changing
-the `Id` to be 0. These factories will still return an object with the previously define
-`FirstName` "Joe" and `LastName` "Bloggs".
+the `Id` to be 0. These factories will still return an object with the previously defined
+`FirstName = "Joe"` and `LastName = "Bloggs"`.
 
 ### Using Inline Notation
 	FactoryFriend.Extend<Person>("WithValidProperties", "WithNoId").As(x => 
@@ -96,10 +96,12 @@ the `Id` to be 0. These factories will still return an object with the previousl
 ## Using your defined Factories
 Now that you have defined and extended your factories, its now time to get an object
 out of them. A fresh object is returned, with the defined properties set by calling:
+
 	var personWithValidProperties = FactoryFriend.Build<Person>("WithValidProperties");
 	var personWithNoId = FactoryFriend.Build<Person>("WithNoId");
 	
 Not that for the above objects, all statements below are true.
+
 	// For personWithValidProperties, made using "WithValidProperties" factory
 	Assert.That(personWithValidProperties.FirstName, Is.EqualTo("Joe"));
     Assert.That(personWithValidProperties.LastName, Is.EqualTo("Bloggs"));
@@ -112,6 +114,7 @@ Not that for the above objects, all statements below are true.
 	
 ## Clearing out all your defined Factories
 To clear out your Inline Notation defined and extended factories, simply call:
+
 	FactoryFriend.Clear();
 	
 Your Template defined factories stay defined for the entire lifetime 
