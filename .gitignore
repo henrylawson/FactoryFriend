@@ -7,12 +7,12 @@
 /Source/*.sln.DotSettings.user
 /Source/*.1.2.dotCover
 
-/Source/FactoryFriendCore/bin
-/Source/FactoryFriendCore/obj
-/Source/FactoryFriendCore.Test/*.StyleCop
-/Source/FactoryFriendCore.Test/bin
-/Source/FactoryFriendCore.Test/obj
-/Source/FactoryFriendCore.Test/*.StyleCop
+/Source/FactoryFriend/bin
+/Source/FactoryFriend/obj
+/Source/FactoryFriend.Test/*.StyleCop
+/Source/FactoryFriend.Test/bin
+/Source/FactoryFriend.Test/obj
+/Source/FactoryFriend.Test/*.StyleCop
 
 /Tools/nant-0.91/*
 !/Tools/nant-0.91/DOWNLOAD_AND_EXTRACT_HERE
