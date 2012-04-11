@@ -18,7 +18,7 @@
         }
 
         [Test]
-        public void ShouldFindFourTemplatesInAssemblies()
+        public void ShouldFindAtLeast1TemplateInAssemblies()
         {
             var templateTypes = templator.GatherTemplates();
 
@@ -26,7 +26,7 @@
         }
 
         [Test]
-        public void ShouldFindFourMethodInfosDefinedInTheTwoTemplates()
+        public void ShouldFindAtLeast1MethodInfosDefinedInTheTwoTemplates()
         {
             var templateTypes = templator.GatherMethodInfosForTemplates();
 

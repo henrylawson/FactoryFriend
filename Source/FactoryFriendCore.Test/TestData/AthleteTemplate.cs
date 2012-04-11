@@ -5,7 +5,7 @@
 
     public class AthleteTemplate : IFactoryFriendTemplate
     {
-        public Athlete ValidProperties(Athlete entity)
+        public Athlete WithValidProperties(Athlete entity)
         {
             entity.FirstName = "Joe";
             entity.LastName = "Bloggs";
@@ -13,22 +13,22 @@
             return entity;
         }
 
-        public Athlete NameToTonyAndIdTo88(Athlete entity)
+        public Athlete WithNameTonyAndValidProperties(Athlete entity)
         {
             entity.FirstName = "Tony";
             entity.Id = 88;
             return entity;
         }
 
-        [Extends("ValidProperties")]
-        public Athlete InvalidProperties(Athlete entity)
+        [Extends("WithValidProperties")]
+        public Athlete WithInvalidProperties(Athlete entity)
         {
             entity.Id = 0;
             return entity;
         }
 
-        [Extends("ValidProperties", "NameToTonyAndIdTo88")]
-        public Athlete HasTwoExtends(Athlete entity)
+        [Extends("WithValidProperties", "WithNameTonyAndValidProperties")]
+        public Athlete WithTwoExtendsAttributes(Athlete entity)
         {
             return entity;
         }

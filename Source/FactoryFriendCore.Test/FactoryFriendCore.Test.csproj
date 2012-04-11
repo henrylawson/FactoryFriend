@@ -43,7 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactoryFriendTest.cs" />
+    <Compile Include="FactoryFriendInlineNotationTest.cs" />
+    <Compile Include="FactoryFriendTemplateTest.cs" />
     <Compile Include="Helpers\PseudoRandomGenerateTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templating\TemplatorTest.cs" />
