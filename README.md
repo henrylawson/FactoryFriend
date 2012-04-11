@@ -15,8 +15,7 @@ complexity of your code.
 
 # Getting Started
 ## Download the Assembly
-At the moment FactoryFriend isn't ready for release yet. However feel 
-free to pull and compile your own assembly.
+You can download the latest version `dll` from the [downloads page](https://github.com/henrylawson/FactoryFriend/downloads).
 
 ## Reference the Assembly
 In Visual Studio, in the `Solution Explorer` window. Expand your .Net 
